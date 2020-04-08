@@ -27,7 +27,7 @@ app.listen(process.env.PORT || 3000, () => {
 
 app.get("/", (req, res) => {
     res.send(
-      "<h1 style='text-align: center'>Wellcome to mail sender <br></h1>"
+      "<h1 style='text-align: center'>Welcome to Achtkarspelen mail sender <br></h1>"
     );
   });
 
