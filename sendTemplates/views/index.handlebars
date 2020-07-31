@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.1/css/ol.css" type="text/css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -11,7 +12,18 @@
         h3 { 
             color: lightblue;
         }
+
+      
+div.map {
+  position: absolute;
+  top: 150px;
+  right: 800px;
+  width: 300px;
+  height: 300px;
+  border: 3px solid #73AD21;
+}
     </style>
+ <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.1/build/ol.js"></script>
 </head>
 <body>   
     <div class="row">
@@ -33,6 +45,7 @@
 .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
 .tg .tg-0lax{text-align:left;vertical-align:top}
 </style>
+<div id="map" class="map"></div>
 <table class="tg">
   <tr>
     <th class="tg-lf2h" colspan="2"><span style="font-weight:bold">Ontvangen melding</span></th>
@@ -99,25 +112,22 @@
     <td class="tg-baqh">{{YCoordinaat}}</td>
   </tr>
 </table>
-    <!--<h1>Ontvangen melding</h1>
-    <h2>Bedankt voor de melding, binnen enkele werkdagen wordt er contact op genomen</h2>
-    <h2>Meldingsnummer</h2>
-    <h4>MeldID: {{MeldID}}</h4>
-    <h2>Meldingsdatum</h2>
-    <h4>Date: {{Date}}</h4>
-    <h2>Dichtstbijzijnde adres</h2>
-    <h4>Straat: {{name}}</h4>
-    <h4>Postcode: {{name}}</h4>
-    <h4>Plaats: {{name}}</h4>
-    <h2>Informatie melder</h2>
-    <h4>Name: {{name}}</h4>
-    <h4>Telephonnummer: {{telephone}}</h4>
-    <h4>E-mail adres: {{email}}</h4>
-    <h4>Categorie: {{category}}</h4>
-    <h4>toelichting: {{toelichting}}</h4>
-    <h2>Coordinaten melding</h2>
-    <h4>XCoordinaat: {{XCoordinaat}}</h4>
-    <h4>YCoordinaat: {{YCoordinaat}}</h4>-->
+
+
+<script type="text/javascript">
+      var map = new ol.Map({
+        target: 'map',
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.OSM()
+          })
+        ],
+        view: new ol.View({
+          center: ol.proj.fromLonLat([6.560568,53.206719]),
+          zoom: 16
+        })
+      });
+    </script>
     
     
 </body>

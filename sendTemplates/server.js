@@ -8,7 +8,7 @@ require('dotenv').config();
 const nodemailer = require('nodemailer');
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const hbs = require('nodemailer-handlebars');
+const hbs = require('nodemailer-express-handlebars');
 const express = require("express");
 const details = require("./details.json");
 const log = console.log;
@@ -36,9 +36,10 @@ app.get("/", (req, res) => {
 app.post("/sendmail", (req, res) => {
     try {
         console.log("request came");
+        console.log(req.body)
         let user = req.body;
         sendMail(user, info => {
-            //console.log(`The mail has beed sent and the id is ${info.messageId}`);
+            console.log(info);
             res.send(info);
         })
     } catch (err) {
@@ -100,7 +101,7 @@ async function sendMail(user, callback) {
     // Step 4
     let info = await transporter.sendMail(mailOptions, (err, data) => {
         if (err) {
-            return log('Error occurs');
+            return log(err);
         }
         return log('Email sent!!!');
     })
